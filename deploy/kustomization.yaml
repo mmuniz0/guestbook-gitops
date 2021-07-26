@@ -10,4 +10,4 @@ resources:
 
 images:
 - name: mmuniz0/guestbook
-  newTag: 710ac275d9ccfc84cd574e09c2343fb8f22f7d79
+  newTag: 5487c3902e10838985926484a6ad018c13c4e02f
