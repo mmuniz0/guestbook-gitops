@@ -9,11 +9,11 @@ resources:
 - redis-slave-service.yaml
 
 images:
-- name: mmuniz0/guestbook
-  newTag: 71d90735b9a85da3d0b11150fef026d31977bb57
 - name: frontend
   newName: guestbook
   newTag: 3fa38b9d2acb82a6e567c5935d1037a1339e4f1d
 - name: guestbook
   newName: guestbook
   newTag: new
+- name: mmuniz0/guestbook
+  newTag: 042fced06a6dc2248236699912fbf56ec1bf7c3b
