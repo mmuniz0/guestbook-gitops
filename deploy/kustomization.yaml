@@ -17,3 +17,5 @@ images:
 - name: guestbook
   newName: guestbook
   newTag: new
+- name: mmuniz0/guestbook
+  newTag: 43e35e26cc2e8779d840162d54d9ccca991761e8
