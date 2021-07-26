@@ -11,7 +11,7 @@ on:
     branches:         # array of glob patterns matching against refs/heads. Optional; defaults to all
     - master          # triggers on pushes that contain changes in master
 
-name: Build and Push an Image to ECR
+name: Build and Push an Image to Docker hub
 
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
 env:
@@ -30,7 +30,7 @@ jobs:
 
     # Add steps here like linting, testing, minification, etc.
       
-    - name: Setup ECR
+    - name: Setup Docker hub Acces
       run: |
         # Login to docker registry
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
