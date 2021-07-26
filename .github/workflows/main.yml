@@ -15,11 +15,8 @@ name: Build and Push an Image to ECR
 
 # https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
 env:
-  AWS_DEFAULT_REGION: us-west-1
-  AWS_DEFAULT_OUTPUT: json
-  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  DOCKER_USER: ${{secrets.DOCKER_USER}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   CONTAINER_IMAGE: guestbook:${{ github.sha }}
 
 jobs:
@@ -35,21 +32,21 @@ jobs:
       
     - name: Setup ECR
       run: |
-        # Login to AWS ECR
-        $( aws ecr get-login --no-include-email )
+        # Login to docker registry
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build and tag the image
       run: |
         # Build and tag the image
         docker build \
           -t $CONTAINER_IMAGE \
-          -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE ./php-redis
+          -t $DOCKER_USER/$CONTAINER_IMAGE ./php-redis
  
     # Set image tag in kustomization
 
     - name: Set image tag
       run: |
           cd deploy
-          kustomize edit set image $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE
+          kustomize edit set image $DOCKER_USER/$CONTAINER_IMAGE
           cat kustomization.yaml
     - name: Commit kustomization
       run: |
@@ -70,4 +67,4 @@ jobs:
       if: github.ref == 'refs/heads/master'
       run: |
         # Push image to AWS ECR
-        docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CONTAINER_IMAGE
+        docker push $DOCKER_USER/$CONTAINER_IMAGE
