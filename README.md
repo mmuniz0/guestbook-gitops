@@ -42,7 +42,7 @@ You will need a GitHub account for this step.
 
 ## Part 2: Create an Minikube cluster:
 
-Fllow the guide to install Minikube and start a local cluster: [Minikube - Install and Start](https://minikube.sigs.k8s.io/docs/start/)
+Follow the guide to install Minikube and start a local cluster: [Minikube - Install and Start](https://minikube.sigs.k8s.io/docs/start/)
 
 ## Part 2: Create an Docker Hub container registry Account and set up GitHub Actions Workflow
 
@@ -54,7 +54,7 @@ Open an [Docker Hub account](https://hub.docker.com/) and create a repository. Y
 
 2. Specify secrets for DockerHub
 
-Create the following three GitHub secrets:
+Create the following GitHub secrets:
 
 ```
 DOCKER_USER
