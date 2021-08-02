@@ -265,7 +265,7 @@ kubernetes-dashboard   kubernetes-dashboard-968bcb79-tps4s                     1
 
 Display the Guestbook frontend in your browser by retrieving the URL from the app running in the cluster with:
 
-To get an external Ip in Minikube for a service you need to run in other terminal:
+To  create a route to service deployed with type LoadBalancer and get an external Ip in Minikube for this service you need to run in other terminal:
 
 `minikube tunnel`
 
