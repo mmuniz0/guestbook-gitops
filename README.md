@@ -129,7 +129,6 @@ flux bootstrap github \
   --path=minikube \
   --personal
 ```
-[Flux version 2](https://www.weave.works/blog/gitops-with-flux-v2) let’s you easily work with multiple clusters and multiple repositories. New cluster configurations and applications can be applied from the same repo by specifying a new path for each.
 
 Once it’s finished bootstrapping, you will see the following:
 ```
@@ -240,27 +239,33 @@ Now check to see that the new frontend images are deploying:
 
 `kubectl get pods -A`
 ```
-NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE
-default       frontend-6f9b84d75d-g48hf       1/1     Running   0          95s
-default       frontend-6f9b84d75d-ncqj6       1/1     Running   0          84s
-default       frontend-6f9b84d75d-v5pfs       1/1     Running   0          107s
-default       redis-master-545d695785-r8ckm   1/1     Running   0          58m
-default       redis-slave-84548fdbc-nk4mf     1/1     Running   0          58m
-default       redis-slave-84548fdbc-vvmws     1/1     Running   0          58m
-flux          flux-75888db95c-pnztj           1/1     Running   0          61m
-flux          memcached-86869f57fd-hhqnk      1/1     Running   0          61m
-kube-system   aws-node-bcw7j                  1/1     Running   0          67m
-kube-system   aws-node-gt52t                  1/1     Running   0          67m
-kube-system   coredns-6f6c47b49d-57w8q        1/1     Running   0          74m
-kube-system   coredns-6f6c47b49d-k2dc5        1/1     Running   0          74m
-kube-system   kube-proxy-mgzwv                1/1     Running   0          67m
-kube-system   kube-proxy-pxbfk                1/1     Running   0          67m
+manuel@manus-notebook:/usr/bin$ kubectl get pods -A
+NAMESPACE              NAME                                                    READY   STATUS    RESTARTS   AGE
+default                frontend-6469cdfb7d-b2l2r                               1/1     Running   0          5m
+default                frontend-6469cdfb7d-msrkm                               1/1     Running   0          5m
+default                redis-master-f46ff57fd-grcbp                            1/1     Running   1          11m
+default                redis-slave-7979cfdfb8-5vb87                            1/1     Running   1          11m
+default                redis-slave-7979cfdfb8-mklzd                            1/1     Running   1          11m
+flux-system            helm-controller-5b96d94c7f-6mxpj                        1/1     Running   2          11d
+flux-system            kustomize-controller-5b95b78ddc-6z2dh                   1/1     Running   3          11d
+flux-system            notification-controller-55f94bc746-f2hz2                1/1     Running   2          11d
+flux-system            source-controller-78bfb8576-2hnbh                       1/1     Running   2          11d
+kube-system            coredns-74ff55c5b-8x77n                                 1/1     Running   3          13d
+kube-system            etcd-minikube                                           1/1     Running   3          13d
+kube-system            kube-apiserver-minikube                                 1/1     Running   3          13d
+kube-system            kube-controller-manager-minikube                        1/1     Running   3          13d
+kube-system            kube-proxy-qbtrk                                        1/1     Running   3          13d
+kube-system            kube-scheduler-minikube                                 1/1     Running   3          13d
+kube-system            storage-provisioner                                     1/1     Running   18         13d
+kubernetes-dashboard   dashboard-metrics-scraper-f6647bd8c-fn284               1/1     Running   1          11d
+kubernetes-dashboard   kubernetes-dashboard-968bcb79-tps4s                     1/1     Running   1          11d
+
 ```
 ### Display the Guestbook application
 
 Display the Guestbook frontend in your browser by retrieving the URL from the app running in the cluster with:
 
-To get an external Ip in Minikube you need to run in other terminal:
+To get an external Ip in Minikube for a service you need to run in other terminal:
 
 `minikube tunnel`
 
@@ -270,11 +275,8 @@ And the display the Guestbook frontend in your browser by retrieving the URL fro
 
 The response should be similar to this:
 ```
-  NAME       TYPE        CLUSTER-IP      EXTERNAL-IP        PORT(S)        AGE
-  frontend   ClusterIP   10.51.242.136   109.197.92.229     80:32372/TCP   1m
+ NAME       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)        AGE
+frontend   LoadBalancer   10.110.64.76   10.110.64.76   80:30822/TCP    11m
 ```
 
 Now that you have Flux set up, you can keep making changes to the UI, and run the change through GitHub Actions to build and push new images to ECR. Flux will notice the new image and deploy your changes to the cluster, kicking your software development into overdrive.
-
-
-
