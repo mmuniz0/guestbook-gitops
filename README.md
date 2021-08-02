@@ -31,7 +31,7 @@ You will need to sign up for the following services:
 * Kubectl version 1.18 or newer
 * [Kustomize](https://github.com/kubernetes-sigs/kustomize)
 
-In this example, you will install the standard [Guestbook sample application](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/) to EKS. Then you’ll make a change to the look of the buttons and deploy it to Minikube with GitOps.
+In this example, you will install the standard [Guestbook sample application](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/) to MinkubeF. Then you’ll make a change to the look of the buttons and deploy it to Minikube with GitOps.
 
 ## Part 1: Fork the Guestbook app repository
 
