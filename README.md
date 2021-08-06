@@ -36,7 +36,7 @@ In this example, you will install the standard [Guestbook sample application](ht
 You will need a GitHub account for this step.
 
 * Fork and clone the repository: `weaveworks/guestbook-gitops`
-* Keep the repo handy as you’ll be adding a deployment key to the repo that Flux requires as well as a few credentials once you have your dOCKER hUB container registry set up.
+* Keep the repo handy as you’ll be adding a deployment key to the repo that Flux requires as well as a few credentials once you have your Docker Hub container registry set up.
 
 ## Part 2: Create an Minikube cluster:
 
