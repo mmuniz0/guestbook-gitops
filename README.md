@@ -38,7 +38,7 @@ In this example, you will install the standard [Guestbook sample application](ht
 You will need a GitHub account for this step.
 
 * Fork and clone the repository: `weaveworks/guestbook-gitops`
-* Keep the repo handy as you’ll be adding a deployment key to the repo that Flux requires as well as a few credentials once you have your ECR AWS container registry set up.
+* Keep the repo handy as you’ll be adding a deployment key to the repo that Flux requires as well as a few credentials once you have your dOCKER hUB container registry set up.
 
 ## Part 2: Create an Minikube cluster:
 
@@ -104,7 +104,7 @@ images:
   newName:guestbook
   newTag: new
 ```
-As mentioned above, the Github Actions script updates the image tag in this file after the image is built and pushed, indicating to Flux that a new image is available in ECR.
+As mentioned above, the Github Actions script updates the image tag in this file after the image is built and pushed, indicating to Flux that a new image is available in Docker Hub.
 
 But before we see that in action, let’s install Flux and its other controllers to your cluster.
 
@@ -279,4 +279,4 @@ The response should be similar to this:
 frontend   LoadBalancer   10.110.64.76   10.110.64.76   80:30822/TCP    11m
 ```
 
-Now that you have Flux set up, you can keep making changes to the UI, and run the change through GitHub Actions to build and push new images to ECR. Flux will notice the new image and deploy your changes to the cluster, kicking your software development into overdrive.
+Now that you have Flux set up, you can keep making changes to the UI, and run the change through GitHub Actions to build and push new images to Docker Hub. Flux will notice the new image and deploy your changes to the cluster, kicking your software development into overdrive.
