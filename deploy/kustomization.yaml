@@ -8,12 +8,12 @@ resources:
 - redis-slave-deployment.yaml
 - redis-slave-service.yaml
 
-images:
 #- name: frontend
 #  newName: guestbook
 #  newTag: 3fa38b9d2acb82a6e567c5935d1037a1339e4f1d
 #- name: guestbook
 #  newName: guestbook
 #  newTag: new
+images:
 - name: mmuniz0/guestbook
-  newTag: 585b2b4f49298ef788bce0dd83313aefcbd15374
+  newTag: 80a17e50896df912086487f231ecbca521b7b407
